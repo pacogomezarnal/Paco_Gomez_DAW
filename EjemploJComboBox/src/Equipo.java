@@ -1,13 +1,14 @@
-import java.io.Serializable;
 
-public class Equipo implements Serializable{
-	
-	//atributos del Equipo
-	private String nombreEquipo;
+
+public class Equipo{
 	private int golesFavor;
 	private int golesEnContra;
 	private int partidosGanados;
 	private int partidosPerdidos;
+	
+	//atributos del Equipo
+	private String nombreEquipo;
+
 
 	public Equipo(String nom, int golesF,int golesC,int partidosG,int partidosP) {
 		// Inicialización
