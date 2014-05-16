@@ -14,6 +14,20 @@ public class PrincipalHilo {
 		subproceso2.start();// invoca al método run de tarea2
 		subproceso3.start();// invoca al método run de tarea3
 		System.out.println("Tareas iniciadas, main termina.\n");
+		
+		//Ejecutar a traves de administrador de hilos
+		/*
+		 * // crea objeto ExecutorService para administrar los subprocesos
+			ExecutorService ejecutorSubprocesos = Executors.newCachedThreadPool();
+			// inicia los subprocesos y los coloca en el estado ejecutable
+			ejecutorSubprocesos.execute( subproceso1 ); // inicia tarea1
+			ejecutorSubprocesos.execute( subproceso2 ); // inicia tarea2
+			ejecutorSubprocesos.execute( subproceso3 ); // inicia tarea3
+			
+			// cierra los subprocesos trabajadores cuando terminan sus tareas
+			ejecutorSubprocesos.shutdown();
+		 */
+		 
 	}
 
 }

@@ -7,6 +7,8 @@ public class Hilo implements Runnable {
 	private final String nombreTarea;// nombre de la tarea
 	private final static Random generador = new Random();
 	
+	private volatile boolean isRunning = true;
+	
 	public Hilo(String nombre)  {
 		nombreTarea = nombre; // establece el nombre de la tarea
 		// elige un tiempo de inactividad aleatorio entre 0 y 5 segundos
@@ -28,5 +30,9 @@ public class Hilo implements Runnable {
 		// imprime el nombre de la tarea
 		System.out.printf("%s termino su inactividad\n", nombreTarea ); 
 	}// fin del método run
+	
+	 public void kill() {
+	       isRunning = false;
+	   }
 
 }
