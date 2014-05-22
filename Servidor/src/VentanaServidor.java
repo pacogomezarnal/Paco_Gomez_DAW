@@ -18,6 +18,8 @@ public class VentanaServidor extends JFrame {
 	private Servidor s;
 	private Thread servidorDemonio;
 	private JTextField estado;
+	private JTextField cliente;
+	private JTextField mensaje;
 
 	/**
 	 * Launch the application.
@@ -67,8 +69,31 @@ public class VentanaServidor extends JFrame {
 		});
 		btnNewButton.setBounds(10, 68, 89, 23);
 		contentPane.add(btnNewButton);
+		
+		JLabel lblMensajeDelCliente = new JLabel("Mensaje del cliente");
+		lblMensajeDelCliente.setBounds(10, 115, 141, 14);
+		contentPane.add(lblMensajeDelCliente);
+		
+		cliente = new JTextField();
+		cliente.setEditable(false);
+		cliente.setColumns(10);
+		cliente.setBounds(10, 145, 391, 20);
+		contentPane.add(cliente);
+		
+		JLabel lblEnviarMensaje = new JLabel("Enviar mensaje");
+		lblEnviarMensaje.setBounds(10, 181, 141, 14);
+		contentPane.add(lblEnviarMensaje);
+		
+		mensaje = new JTextField();
+		mensaje.setColumns(10);
+		mensaje.setBounds(10, 206, 391, 20);
+		contentPane.add(mensaje);
+		
+		JButton btnEnviar = new JButton("Enviar");
+		btnEnviar.setBounds(10, 239, 89, 23);
+		contentPane.add(btnEnviar);
 
 		//CReamos Servidor
-		s=new Servidor();
+		s=new Servidor(cliente);
 	}
 }
