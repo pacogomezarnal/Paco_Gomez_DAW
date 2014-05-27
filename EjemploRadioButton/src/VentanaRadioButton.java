@@ -88,7 +88,14 @@ public class VentanaRadioButton extends JFrame {
 		JButton Guardar = new JButton("Guardar");
 		Guardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				bd.insertarPregunta(textField.getText(), "");
+				String opcion="";
+				if(opcion1.isSelected()) 
+					opcion="opcion1";
+				else if(opcion2.isSelected())
+					opcion="opcion2";
+				else
+					opcion="opcion3";
+				bd.insertarPregunta(textField.getText(), opcion);
 			}
 		});
 		Guardar.setBounds(10, 228, 89, 23);
