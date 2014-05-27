@@ -12,6 +12,8 @@ import javax.swing.JRadioButton;
 import java.awt.event.ItemListener;
 import java.awt.event.ItemEvent;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 
 public class VentanaRadioButton extends JFrame {
@@ -22,6 +24,9 @@ public class VentanaRadioButton extends JFrame {
 	private JRadioButton opcion1;
 	private JRadioButton opcion2;
 	private JRadioButton opcion3;
+	
+	//Base de datos
+	BD bd;
 
 	/**
 	 * Launch the application.
@@ -81,8 +86,14 @@ public class VentanaRadioButton extends JFrame {
 		grupoDeBotones.add(opcion3);
 		
 		JButton Guardar = new JButton("Guardar");
+		Guardar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				bd.insertarPregunta(textField.getText(), "");
+			}
+		});
 		Guardar.setBounds(10, 228, 89, 23);
 		contentPane.add(Guardar);
 		
+		bd=new BD();
 	}
 }
