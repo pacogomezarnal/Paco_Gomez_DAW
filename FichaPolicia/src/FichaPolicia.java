@@ -25,6 +25,9 @@ public class FichaPolicia extends JFrame {
 	
 	//ComboBox para guardar delincuentes
 	private JComboBox<Delincuente> delincuentes;
+	
+	//Objeto Base de datos
+	private DB baseDatos;
 
 	//Lanza la aplicación
 	public static void main(String[] args) {
@@ -110,5 +113,19 @@ public class FichaPolicia extends JFrame {
 		Crimen.setBounds(148, 161, 276, 20);
 		contentPane.add(Crimen);
 		Crimen.setColumns(10);
+		
+		//Conectamos con Base de Datos
+		 baseDatos= new DB(delincuentes);
+		 
+		 JButton btnModificar = new JButton("Modificar");
+		 btnModificar.addActionListener(new ActionListener() {
+		 	public void actionPerformed(ActionEvent arg0) {
+		 		Delincuente d=delincuentes.getItemAt(delincuentes.getSelectedIndex());
+		 		d.setNombre(Nombre.getText());
+		 		baseDatos.insertarDelincuente(d);
+		 	}
+		 });
+		 btnModificar.setBounds(107, 272, 89, 23);
+		 contentPane.add(btnModificar);
 	}
 }
