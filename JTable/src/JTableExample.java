@@ -17,6 +17,10 @@ import com.mysql.jdbc.Statement;
 import javax.swing.JTable;
 import javax.swing.border.LineBorder;
 import java.awt.Color;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
 
 
 public class JTableExample extends JFrame {
@@ -25,6 +29,7 @@ public class JTableExample extends JFrame {
 	private DefaultTableModel dtmEjemplo;
 	private JTable table;
 	private JScrollPane scpEjemplo;
+	private JTextField ligaField;
 
 	/**
 	 * Launch the application.
@@ -49,7 +54,7 @@ public class JTableExample extends JFrame {
 		
 		//PARTE GRÁFICA SWING
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 450, 388);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -70,6 +75,16 @@ public class JTableExample extends JFrame {
 		conexionDB();       
 		
         table = new JTable();
+        table.addMouseListener(new MouseAdapter() {
+        	@Override
+        	public void mouseClicked(MouseEvent arg0) {
+        		//Obtenemos la fila seleccionada
+        		int fila=table.getSelectedRow();
+        		//Obtenemos el valor
+        		String nombre=table.getValueAt(fila, 1).toString();
+        		ligaField.setText(nombre);
+        	}
+        });
 		table.setModel(dtmEjemplo);
 	
 		
@@ -80,6 +95,15 @@ public class JTableExample extends JFrame {
 		//http://docs.oracle.com/javase/7/docs/api/javax/swing/JScrollPane.html
 		scrollPane.setViewportView(table);
 		contentPane.add(scrollPane);
+		
+		JLabel lblValorSeleccionado = new JLabel("Liga seleccionada");
+		lblValorSeleccionado.setBounds(10, 267, 114, 14);
+		contentPane.add(lblValorSeleccionado);
+		
+		ligaField = new JTextField();
+		ligaField.setBounds(10, 289, 174, 20);
+		contentPane.add(ligaField);
+		ligaField.setColumns(10);
 		
 
 	}
